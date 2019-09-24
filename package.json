@@ -1,10 +1,10 @@
 {
-  "name": "moodlemobile",
+  "name": "dracolmsmobile",
   "version": "3.7.1",
-  "description": "The official app for Moodle.",
+  "description": "DracoLMS Mobile",
   "author": {
     "name": "Moodle Pty Ltd.",
-    "email": "mobile@moodle.com"
+    "email": "destek@dracolex.com"
   },
   "config": {
     "ionic_webpack": "./config/webpack.config.js",
