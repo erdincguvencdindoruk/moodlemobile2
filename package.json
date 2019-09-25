@@ -1,9 +1,9 @@
 {
-  "name": "dracolmsmobile",
-  "version": "3.7.1",
-  "description": "DracoLMS Mobile",
+  "name": "dracolms",
+  "version": "0.0.1",
+  "description": "DracoLMS",
   "author": {
-    "name": "Moodle Pty Ltd.",
+    "name": "Dracolex",
     "email": "destek@dracolex.com"
   },
   "config": {

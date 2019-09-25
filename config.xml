@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dracolex.dracolmsmobile" version="3.7.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>DracoLMS Mobile</name>
-    <description>DracoLMS Mobile </description>
-    <author email="destek@dracolex.com" href="http://www.dracolex.com">DracoLMS Mobile</author>
+<widget id="com.dracolex.dracolms" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>DracoLMS</name>
+    <description>DracoLMS </description>
+    <author email="destek@dracolex.com" href="http://www.dracolex.com">DracoLMS</author>
     <content src="index.html" />
     <access origin="*" />
     <access launch-external="yes" origin="tel:*" />
