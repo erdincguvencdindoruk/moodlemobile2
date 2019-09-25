@@ -1,10 +1,10 @@
 {
-  "name": "dracolmsmobile",
+  "name": "dracolms",
   "integrations": {
     "cordova": {},
     "gulp": {}
   },
   "type": "ionic-angular",
   "watchPatterns": [],
-  "id": "com.dracolex.dracolmsmobile"
+  "id": "com.dracolms.demo001"
 }
