@@ -104,7 +104,7 @@
             </ion-list>
         </ion-card>
 
-        <!-- Open in browser button. 
+        <!-- Open in browser button. -->
         <ion-card *ngIf="errorMessage">
             <ion-item text-wrap>
                 <p class="text-danger">{{ errorMessage | translate }}</p>
@@ -116,7 +116,7 @@
                 </a>
             </ion-item>
         </ion-card>
--->
+
         <!-- Warning that user doesn't have any more attempts. -->
         <ion-card *ngIf="!errorMessage && scorm && scorm.attemptsLeft <= 0">
             <ion-item text-wrap>

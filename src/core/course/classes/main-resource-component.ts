@@ -18,6 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { CoreLoggerProvider } from '@providers/logger';
 import { CoreDomUtilsProvider } from '@providers/utils/dom';
 import { CoreTextUtilsProvider } from '@providers/utils/text';
+import { CoreSitesProvider } from '@providers/sites';
 import { CoreCourseHelperProvider } from '@core/course/providers/helper';
 import { CoreCourseModuleMainComponent, CoreCourseModuleDelegate } from '@core/course/providers/module-delegate';
 import { CoreCourseSectionPage } from '@core/course/pages/section/section.ts';
@@ -41,6 +42,7 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
     // Data for context menu.
     externalUrl: string; // External URL to open in browser.
     description: string; // Module description.
+    userid: number;
     refreshIcon: string; // Refresh icon, normally spinner or refresh.
     prefetchStatusIcon: string; // Used when calling fillContextMenu.
     prefetchStatus: string; // Used when calling fillContextMenu.
@@ -55,6 +57,7 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
     // List of services that will be injected using injector.
     // It's done like this so subclasses don't have to send all the services to the parent in the constructor.
     protected textUtils: CoreTextUtilsProvider;
+    protected sites: CoreSitesProvider;
     protected courseHelper: CoreCourseHelperProvider;
     protected translate: TranslateService;
     protected domUtils: CoreDomUtilsProvider;
@@ -68,6 +71,7 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
 
     constructor(injector: Injector, loggerName: string = 'CoreCourseModuleMainResourceComponent') {
         this.textUtils = injector.get(CoreTextUtilsProvider);
+        this.sites = injector.get(CoreSitesProvider);
         this.courseHelper = injector.get(CoreCourseHelperProvider);
         this.translate = injector.get(TranslateService);
         this.domUtils = injector.get(CoreDomUtilsProvider);
@@ -86,9 +90,12 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
      * Component being initialized.
      */
     ngOnInit(): void {
+        const currentSite = this.sites.getCurrentSite(),
+            currentSiteUrl = currentSite && currentSite.getURL();
+        this.userid = currentSite.getUserId();
         this.description = this.module.description;
         this.componentId = this.module.id;
-        this.externalUrl = this.module.url;
+        this.externalUrl = currentSiteUrl + '/login/autoauth.php?userid=' + this.userid + '&courseid=' + this.courseId;
         this.loaded = false;
         this.refreshIcon = 'spinner';
         this.blogProvider.isPluginEnabled().then((enabled) => {
