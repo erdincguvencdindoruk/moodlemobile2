@@ -25,6 +25,7 @@ import { CoreCourseSectionPage } from '@core/course/pages/section/section.ts';
 import { CoreContentLinksHelperProvider } from '@core/contentlinks/providers/helper';
 import { AddonBlogProvider } from '@addon/blog/providers/blog';
 import { CoreConstants } from '@core/constants';
+import { Md5 } from 'ts-md5/dist/md5';
 
 /**
  * Template class to easily create CoreCourseModuleMainComponent of resources (or activities without syncing).
@@ -43,6 +44,7 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
     externalUrl: string; // External URL to open in browser.
     description: string; // Module description.
     userid: number;
+    token: any;
     refreshIcon: string; // Refresh icon, normally spinner or refresh.
     prefetchStatusIcon: string; // Used when calling fillContextMenu.
     prefetchStatus: string; // Used when calling fillContextMenu.
@@ -95,7 +97,10 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
         this.userid = currentSite.getUserId();
         this.description = this.module.description;
         this.componentId = this.module.id;
-        this.externalUrl = currentSiteUrl + '/login/autoauth.php?userid=' + this.userid + '&courseid=' + this.courseId;
+        this.token = ( this.userid + this.courseId ) * 1.772;
+        this.token = <string> Md5.hashAsciiStr(this.token);
+        this.externalUrl = currentSiteUrl + '/login/autoauth.php?userid=' + this.userid + '&courseid=' + this.courseId +
+        '&token=' + this.token;
         this.loaded = false;
         this.refreshIcon = 'spinner';
         this.blogProvider.isPluginEnabled().then((enabled) => {
