@@ -45,6 +45,7 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
     description: string; // Module description.
     userid: number;
     token: any;
+    randomNumber: number;
     refreshIcon: string; // Refresh icon, normally spinner or refresh.
     prefetchStatusIcon: string; // Used when calling fillContextMenu.
     prefetchStatus: string; // Used when calling fillContextMenu.
@@ -97,10 +98,11 @@ export class CoreCourseModuleMainResourceComponent implements OnInit, OnDestroy,
         this.userid = currentSite.getUserId();
         this.description = this.module.description;
         this.componentId = this.module.id;
-        this.token = ( this.userid + this.courseId ) * 1.772;
-        this.token = <string> Md5.hashAsciiStr(this.token);
+        this.randomNumber = Math.floor(Math.random() * 1000);
+        this.token = ( this.userid + this.courseId + this.randomNumber) * 1.772;
+        this.token = <string> Md5.hashStr('' + this.token);
         this.externalUrl = currentSiteUrl + '/login/autoauth.php?userid=' + this.userid + '&courseid=' + this.courseId +
-        '&token=' + this.token;
+        '&number=' + this.randomNumber + '&token=' + this.token;
         this.loaded = false;
         this.refreshIcon = 'spinner';
         this.blogProvider.isPluginEnabled().then((enabled) => {

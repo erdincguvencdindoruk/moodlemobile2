@@ -34,7 +34,7 @@
             </ion-item>
             <addon-notifications-actions [contextUrl]="notification.contexturl" [courseId]="notification.courseid" [data]="notification.customdata"></addon-notifications-actions>
         </ion-card>
-        <core-empty-box *ngIf="!notifications || notifications.length <= 0" icon="notifications" [message]="'addon.notifications.therearentnotificationsyet' | translate"></core-empty-box>
+        <core-empty-box *ngIf="!notifications || notifications.length <= 0" icon="sad" [message]="'addon.notifications.therearentnotificationsyet' | translate"></core-empty-box>
         <core-infinite-loading [enabled]="canLoadMore" (action)="loadMoreNotifications($event)" [error]="loadMoreError"></core-infinite-loading>
     </core-loading>
 </ion-content>
