@@ -1,10 +1,10 @@
 {
-  "name": "demo001",
+  "name": "development",
   "integrations": {
     "cordova": {},
     "gulp": {}
   },
   "type": "ionic-angular",
   "watchPatterns": [],
-  "id": "com.dracolms.demo001"
+  "id": "com.dracolms.development"
 }
